@@ -34,21 +34,19 @@ public class MainActivity extends AppCompatActivity {
 
         colour = Color.BLACK;
 
-        // TODO Params
         params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
         items.add("The last item");
-        items.addLast("Not the last");
+        items.addFirst("Not the last");
         loadViews();
     }
 
     private void loadViews(){
-        // TODO todo
         // TODO Adding views
         root.removeAllViews();
 
-        LinearLayout layout = new LinearLayout(this);
 
+        LinearLayout layout = new LinearLayout(this);
         input = new EditText(this);
         Button go = new Button(this);
         go.setText("Go");
@@ -65,10 +63,7 @@ public class MainActivity extends AppCompatActivity {
         layout = new LinearLayout(this);
         root.addView(layout, 0);
 
-        // Create buttons
         Button black = new Button(this), blue = new Button(this), red = new Button(this), green = new Button(this);
-
-        // Set their IDs and text
         black.setId(R.id.black);
         black.setText("Black");
         blue.setId(R.id.blue);
@@ -76,12 +71,10 @@ public class MainActivity extends AppCompatActivity {
         red.setId(R.id.red);
         red.setText("Red");
 
-        // Add buttons to layout
         layout.addView(black);
         layout.addView(blue);
         layout.addView(red);
 
-        // Set onClick listeners
         for(int i = 0; i < layout.getChildCount(); i++){
             layout.getChildAt(i).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -91,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        // Add row for each item
         for(int i = 0; i < items.size(); i++){
             item = items.get(i);
             addRow();
@@ -99,13 +91,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addRow(){
-        // TODO Inserting views
-        // Create views
+        // TODO Adding views
         LinearLayout layout = new LinearLayout(this);
         Button button       = new Button(this);
         TextView textView   = new TextView(this);
 
-        // Set orientation
         layout.setOrientation(LinearLayout.HORIZONTAL);
         layout.setHorizontalGravity(Gravity.CENTER);
 
@@ -121,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
         layout.addView(button);
         layout.addView(textView);
-        subLayouts.add(1, layout);
+        subLayouts.addFirst(layout);
         root.addView(layout, 1, params);
     }
 
@@ -153,7 +143,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void changeColour(View v){
-        // Change colour accordingly
         switch (v.getId()){
             case R.id.black:
                 colour = Color.BLACK;
@@ -170,8 +159,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         changeViewColour(root);
-        // or
-        // changeViewColour(subLayouts)
     }
 
 
